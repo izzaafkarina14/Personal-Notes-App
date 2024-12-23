@@ -1,0 +1,37 @@
+.createWrapper {
+  box-sizing: border-box;
+  width: 500px;
+  h2 {
+    color: white;
+    font-weight: bold;
+  }
+  .inputWrapper {
+    p {
+      color: #aaa;
+      text-align: end;
+    }
+    input {
+      padding: 12px;
+      margin: 12px 0;
+      background-color: transparent;
+      color: white;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      width: 100%;
+    }
+    input::placeholder {
+        font-weight: bold;
+    }
+    button {
+      display: block;
+      padding: 8px;
+      background-color: transparent;
+      color: white;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+}
