@@ -1,0 +1,27 @@
+.activeNotes {
+  box-sizing: border-box;
+  width: 1000px;
+  h2 {
+    color: white;
+    font-weight: bold;
+  }
+  .notesCard {
+    border: 1px solid white;
+    display: flex;
+    flex-wrap: wrap;
+    h3 {
+      color: white;
+    }
+    .date {
+      color: #aaa;
+    }
+    .noteBody {
+      color: white;
+    }
+    button {
+        border: 1px solid white;
+        color: white;
+        /* align-items: center; */
+    }
+  }
+}

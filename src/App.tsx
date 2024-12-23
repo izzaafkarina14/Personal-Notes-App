@@ -1,5 +1,6 @@
 import "./App.css";
-import CreateNotes from "./components/create-notes/createNotes";
+import ActiveNotes from "./components/active-notes";
+import CreateNotes from "./components/create-notes";
 import Navbar from "./components/navbar";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       >
         <CreateNotes />
       </div>
+      <ActiveNotes />
     </>
   );
 }
