@@ -25,6 +25,7 @@ export default function CreateNotes() {
             <input
               type="textarea"
               placeholder="Tuliskan catatanmu di sini ..."
+              style={{ width: "500px", height: "175px", alignItems: "flex-start" }}
             />
             <br />
             <button type="submit">Buat</button>
