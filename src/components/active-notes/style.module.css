@@ -5,6 +5,10 @@
     color: white;
     font-weight: bold;
   }
+  p {
+    color: #aaa;
+    /* text-align: center; */
+  }
   .notesCard {
     border: 1px solid white;
     display: flex;
@@ -21,7 +25,6 @@
     button {
         border: 1px solid white;
         color: white;
-        /* align-items: center; */
     }
   }
 }
