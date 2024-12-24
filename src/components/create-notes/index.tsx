@@ -13,6 +13,7 @@ export default function CreateNotes({ addNote }: CreateNotesProps) {
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputLength = event.target.value.length;
     setRemainingChars(50 - inputLength);
+    setTitle(event.target.value)
   };
 
   const handleBodyChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -38,6 +39,7 @@ export default function CreateNotes({ addNote }: CreateNotesProps) {
               placeholder="Ini adalah judul ..."
               maxLength={50}
               onChange={handleTitleChange}
+              value={title}
             />
             <br />
             <textarea

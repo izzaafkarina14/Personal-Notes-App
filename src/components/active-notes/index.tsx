@@ -1,8 +1,19 @@
-import { getInitialData, showFormattedDate } from "../../utils/data";
+import { showFormattedDate } from "../../utils/data";
 import styles from "./style.module.css";
 
-export default function ActiveNotes() {
-  const notes = getInitialData();
+type Note = {
+  id: number,
+  title: string,
+  body: string,
+  createdAt: string,
+  archived: boolean
+};
+
+type ActiveNotesProps = {
+  notes: Note[]
+}
+
+export default function ActiveNotes({notes}: ActiveNotesProps) {
   return (
     <>
       <div className={styles.activeNotes}>

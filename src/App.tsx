@@ -32,7 +32,7 @@ function App() {
       >
         <CreateNotes addNote={addNote}/>
       </div>
-      <ActiveNotes />
+      <ActiveNotes notes={notes} />
     </>
   );
 }
