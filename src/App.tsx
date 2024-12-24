@@ -30,7 +30,7 @@ function App() {
           margin: "16px auto",
         }}
       >
-        <CreateNotes/>
+        <CreateNotes addNote={addNote}/>
       </div>
       <ActiveNotes />
     </>

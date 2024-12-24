@@ -1,12 +1,30 @@
 import { useState } from "react";
 import styles from "./style.module.css";
 
-export default function CreateNotes() {
-  const [remainingChars, setRemainingChars] = useState(50);
+type CreateNotesProps = {
+  addNote: (title: string, body: string) => void;
+};
+
+export default function CreateNotes({ addNote }: CreateNotesProps) {
+  const [remainingChars, setRemainingChars] = useState<number>(50);
+  const [title, setTitle] = useState<string>("");
+  const [body, setBody] = useState<string>("");
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputLength = event.target.value.length;
     setRemainingChars(50 - inputLength);
+  };
+
+  const handleBodyChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    addNote(title, body);
+    setTitle("");
+    setBody("");
+    setRemainingChars(50);
   };
   return (
     <>
@@ -22,13 +40,20 @@ export default function CreateNotes() {
               onChange={handleTitleChange}
             />
             <br />
-            <input
-              type="textarea"
+            <textarea
               placeholder="Tuliskan catatanmu di sini ..."
-              style={{ width: "500px", height: "175px", alignItems: "flex-start" }}
+              onChange={handleBodyChange}
+              value={body}
+              style={{
+                width: "500px",
+                height: "175px",
+                alignItems: "flex-start",
+              }}
             />
             <br />
-            <button type="submit">Buat</button>
+            <button type="submit" onClick={handleSubmit}>
+              Buat
+            </button>
           </div>
         </div>
       </div>
