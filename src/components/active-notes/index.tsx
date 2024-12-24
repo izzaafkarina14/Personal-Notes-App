@@ -1,20 +1,25 @@
-import { showFormattedDate } from "../../utils/data";
+import { Note, showFormattedDate } from "../../utils/data";
 import styles from "./style.module.css";
 
-type Note = {
-  id: number;
-  title: string;
-  body: string;
-  createdAt: string;
-  archived: boolean;
-};
+// type Note = {
+//   id: number;
+//   title: string;
+//   body: string;
+//   createdAt: string;
+//   archived: boolean;
+// };
 
 type ActiveNotesProps = {
   notes: Note[];
   deleteNote: (id: number) => void;
+  archiveNote: (id: number) => void;
 };
 
-export default function ActiveNotes({ notes, deleteNote }: ActiveNotesProps) {
+export default function ActiveNotes({
+  notes,
+  deleteNote,
+  archiveNote,
+}: ActiveNotesProps) {
   return (
     <>
       <div className={styles.activeNotes}>
@@ -41,7 +46,14 @@ export default function ActiveNotes({ notes, deleteNote }: ActiveNotesProps) {
                   >
                     Delete
                   </button>
-                  <button className={styles.archive}>Arsipkan</button>
+                  <button
+                    className={styles.archive}
+                    onClick={() => {
+                      archiveNote(note.id);
+                    }}
+                  >
+                    Arsipkan
+                  </button>
                 </div>
               </div>
             ))}

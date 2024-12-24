@@ -1,4 +1,12 @@
-const getInitialData = () => [
+export type Note = {
+  id: number;
+  title: string;
+  body: string;
+  createdAt: string;
+  archived: boolean;
+};
+
+const getInitialData = (): Note[] => [
   {
     id: 1,
     title: "Babel",
