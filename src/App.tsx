@@ -18,6 +18,11 @@ function App() {
     };
     setNotes([...notes, newNote]);
   };
+
+  const deleteNote = (id: number) => {
+    const filteredNotes = notes.filter((note) => note.id !== id);
+    setNotes(filteredNotes)
+  }
   
   return (
     <>
@@ -32,7 +37,7 @@ function App() {
       >
         <CreateNotes addNote={addNote}/>
       </div>
-      <ActiveNotes notes={notes} />
+      <ActiveNotes notes={notes} deleteNote={deleteNote} />
     </>
   );
 }

@@ -11,9 +11,10 @@ type Note = {
 
 type ActiveNotesProps = {
   notes: Note[]
+  deleteNote: (id: number) => void
 }
 
-export default function ActiveNotes({notes}: ActiveNotesProps) {
+export default function ActiveNotes({notes, deleteNote}: ActiveNotesProps) {
   return (
     <>
       <div className={styles.activeNotes}>
@@ -29,7 +30,9 @@ export default function ActiveNotes({notes}: ActiveNotesProps) {
                 <p className={styles.noteBody}>{note.body}</p>
               </div>
               <div className={styles.noteCardAction}>
-                <button className={styles.delete}>Delete</button>
+                <button className={styles.delete} onClick={() => {
+                  deleteNote(note.id)
+                }}>Delete</button>
                 <button className={styles.archive}>Arsipkan</button>
               </div>
             </div>
