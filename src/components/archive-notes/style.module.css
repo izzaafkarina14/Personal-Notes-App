@@ -1,9 +1,83 @@
 .archiveNotes {
+    box-sizing: border-box;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
     h2 {
-        color: white;
-        font-weight: bold;
+      color: white;
+      font-weight: bold;
+      text-align: start;
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1rem 0;
+    }
+    .emptyMessage {
+      text-align: center;
+      font-size: 1.2rem;
     }
     p {
-        color: #aaa;
+      color: #aaa;
+    }
+    .notesList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+    .notesCard {
+      border: 1px solid white;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      width: 230px;
+      border-radius: 10px;
+      
+      h3 {
+        color: white;
+        font-size: 1.4rem;
+        padding: 0.8rem 0.8rem 0rem 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-}
+      .date {
+        color: #aaa;
+        font-size: 0.78rem;
+        padding: 0rem 0.8rem; 
+      }
+      .noteBody {
+        color: white;
+        font-size: 0.9rem;
+        margin: 0;
+        padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+      }
+      .notesCardAction {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        bottom: 0;
+      }
+      button {
+          color: white;
+          padding: 0.5rem 1rem;
+          border: none;
+          font-size: 1rem;
+          width: 113.9px;
+      }
+      .delete {
+        color: red;
+        border: 1px solid #aaa;
+        border-bottom-left-radius: 10px;
+        align-content: flex-end;
+      }
+      .move {
+        color: yellow;
+        border: 1px solid #aaa;
+        border-bottom-right-radius: 10px;
+      }
+      button:hover {
+        opacity: 0.9;
+        font-weight: bold;
+      }
+    }
+  }
+  

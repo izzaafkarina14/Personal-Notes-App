@@ -1,4 +1,4 @@
-import { Note } from "../../utils/data";
+import { Note, showFormattedDate } from "../../utils/data";
 import styles from "./style.module.css";
 
 type ArchiveNotesProps = {
@@ -17,16 +17,35 @@ export default function ArchiveNotes({
       <div className={styles.archiveNotes}>
         <h2>Arsip</h2>
         {notes.length === 0 ? (
-          <p>Tidak ada catatan</p>
+          <p className={styles.emptyMessage}>Tidak ada catatan</p>
         ) : (
-          notes.map((note) => (
-            <div key={note.id}>
-              <h3>{note.title}</h3>
-              <p>{note.body}</p>
-              <button onClick={() => deleteNote(note.id)}>Delete</button>
-              <button onClick={() => unarchiveNote(note.id)}>Pindahkan</button>
-            </div>
-          ))
+          <div className={styles.notesList}>
+            {notes.map((note) => (
+              <div className={styles.notesCard} key={note.id}>
+                <div className={styles.noteCardContect}>
+                  <h3>{note.title}</h3>
+                  <p className={styles.date}>
+                    {showFormattedDate(note.createdAt)}
+                  </p>
+                  <p className={styles.noteBody}>{note.body}</p>
+                </div>
+                <div className={styles.noteCardAction}>
+                  <button
+                    className={styles.delete}
+                    onClick={() => deleteNote(note.id)}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className={styles.move}
+                    onClick={() => unarchiveNote(note.id)}
+                  >
+                    Pindahkan
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </>
