@@ -1,14 +1,6 @@
 import { Note, showFormattedDate } from "../../utils/data";
 import styles from "./style.module.css";
 
-// type Note = {
-//   id: number;
-//   title: string;
-//   body: string;
-//   createdAt: string;
-//   archived: boolean;
-// };
-
 type ActiveNotesProps = {
   notes: Note[];
   deleteNote: (id: number) => void;
