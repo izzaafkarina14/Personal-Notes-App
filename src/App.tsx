@@ -17,9 +17,10 @@ type Note = {
 function App() {
   const [notes, setNotes] = useState<Note[]>(getInitialData());
   const [archivedNotes, setArchivedNotes] = useState<Note[]>([]);
+  const [searchNotes, setSearchNotes] = useState<string>("");
 
   const addNote = (title: string, body: string) => {
-    const newNote = {
+    const newNote: Note = {
       id: notes.length + 1,
       title,
       body,
@@ -53,9 +54,17 @@ function App() {
     }
   };
 
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(searchNotes.toLowerCase())
+  );
+
+  const filteredArchivedNotes = archivedNotes.filter((note) =>
+    note.title.toLowerCase().includes(searchNotes.toLowerCase())
+  );
+
   return (
     <>
-      <Navbar />
+      <Navbar setSearchNotes={setSearchNotes} />
       <div
         style={{
           display: "flex",
@@ -67,12 +76,12 @@ function App() {
         <CreateNotes addNote={addNote} />
       </div>
       <ActiveNotes
-        notes={notes}
+        notes={filteredNotes}
         deleteNote={deleteNote}
         archiveNote={archiveNote}
       />
       <ArchiveNotes
-        notes={archivedNotes}
+        notes={filteredArchivedNotes}
         deleteNote={deleteNote}
         unarchiveNote={unarchiveNote}
       />
