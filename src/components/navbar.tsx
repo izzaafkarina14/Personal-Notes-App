@@ -1,11 +1,19 @@
 import { Disclosure, DisclosureButton } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 type NavbarProps = {
   setSearchNotes: (query: string) => void;
 };
 
 export default function Navbar({ setSearchNotes }: NavbarProps) {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    setSearchNotes(query);
+    setSearchQuery(query);
+  }
   return (
     <Disclosure
       as="nav"
@@ -42,7 +50,8 @@ export default function Navbar({ setSearchNotes }: NavbarProps) {
                   style={{ borderColor: "#aaa" }}
                   className="w-full bg-transparent placeholder-white text-white text-sm border rounded-md pl-3 pr-28 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                   placeholder="Cari catatatan ..."
-                  onChange={(event) => setSearchNotes(event.target.value)}
+                  value={searchQuery}
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
