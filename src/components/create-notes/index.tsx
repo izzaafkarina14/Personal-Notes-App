@@ -11,9 +11,15 @@ export default function CreateNotes({ addNote }: CreateNotesProps) {
   const [body, setBody] = useState<string>("");
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputLength = event.target.value.length;
-    setRemainingChars(50 - inputLength);
-    setTitle(event.target.value)
+    const inputValue = event.target.value;
+    if (inputValue.length <= 50) {
+      setTitle(inputValue);
+      setRemainingChars(50 - inputValue.length)
+    } else {
+      const trimmedValue = inputValue.slice(0, 50);
+      setTitle(trimmedValue);
+      setRemainingChars(0);
+    }
   };
 
   const handleBodyChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -37,7 +43,6 @@ export default function CreateNotes({ addNote }: CreateNotesProps) {
             <input
               type="text"
               placeholder="Ini adalah judul ..."
-              maxLength={50}
               onChange={handleTitleChange}
               value={title}
             />
