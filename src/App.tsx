@@ -21,13 +21,14 @@ function App() {
 
   const addNote = (title: string, body: string) => {
     const newNote: Note = {
-      id: notes.length + 1,
+      id: +new Date(),
       title,
       body,
       createdAt: new Date().toISOString(),
       archived: false,
     };
     setNotes([...notes, newNote]);
+    console.log("cek id dari notes: ", [...notes, newNote])
   };
 
   const deleteNote = (id: number) => {
